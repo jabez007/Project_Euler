@@ -9,50 +9,72 @@ Completed on Mon, 31 Mar 2014, 14:58
 
 
 def main(n=600851475143):
-    return prime_factorization(n)[-1]
+    return max(prime_factorization(n).keys())
 
 
-def prime_factorization(n, factors=[], primes=[]):
+def prime_factorization(n):
     """
     inefficient "trial and error" method to find factors
     :param n: <int> the number we want to factor
-    :param factors: <list> the prime factors of the number
-    :param primes: <list> the primes we want to test as factors
-    :return: <list> the prime factors of n
+    :return: <dict> the prime factors of n with associated exponents. Keys == primes, Values == exponents
     """
-    if not primes:
-        '''
-        we can start with only checking the primes up to
-        the square root of n to conserve memory resources
-        Though the largest possible prime factor of n would
-        be the prime p such that p*2 = n
-        '''
-        primes = eratosthenes_sieve(int(n ** .5))
+    factors = {}
 
-    if n in primes:
-        factors.append(n)
-    else:
+    if n <= 1:
+        '''
+        nice try
+        '''
+        return factors
+
+    '''
+    To save on memory, start with primes up to the square root of n
+    REMINDER: The largest possible prime factor of n would be the prime p such that p*2 = n
+    '''
+    primes = eratosthenes_sieve(int(n ** .5))
+
+    while n not in primes:
+        orig_n = n
         for p in primes:
             if n % p == 0:
-                factors.append(p)
-                '''
-                Python passes parameters by object reference,
-                so I can append to factors as long as I don't reassign
-                the passed in variable
-                '''
-                return prime_factorization(n/p, factors, primes)
+                add_to_factors(factors, p)
+                n = n / p
+                break
         '''
-        if we make it out of the for loop,
-        then we didn't find a prime factor in this
-        last pass which would be odd if this
-        is a composite number.
-        So, reset the primes to be all primes up to the
-        current n and check again
+        if we make it through all the primes but couldn't divide n break out of the while loop
         '''
-        primes = eratosthenes_sieve(n)
-        return prime_factorization(n, factors, primes)
+        if n == orig_n:
+            break
+
+    '''
+    rebuild the primes now that we've shrunk n down to something we should be able to fit into memory
+    '''
+    primes = eratosthenes_sieve(n)
+
+    if n in primes:
+        '''
+        grab the last prime factor
+        '''
+        add_to_factors(factors, n)
 
     return factors
+
+
+def add_to_factors(factors, factor):
+    """
+    used to keep track of prime factors and associated exponents
+    :param factors: <dict> currently known primes and exponents
+    :param factor: <int> factor to incorporate into factors either by adding a new value or incrementing an exponent
+    :return: <dict> directly modifies passed in factors
+    """
+    '''
+    Python passes parameters by object reference,
+    so I can append to factors as long as I don't reassign
+    the passed in variable
+    '''
+    if factor in factors:
+        factors[factor] += 1
+    else:
+        factors[factor] = 1
 
 
 def eratosthenes_sieve(n=100):
