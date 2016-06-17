@@ -46,6 +46,13 @@ def prime_factorization(n):
             break
 
     '''
+    if we haven't found any factors after going through all the primes up to the square root of n
+    n is probably prime itself
+    '''
+    if not factors:
+        return {n: 1}
+
+    '''
     rebuild the primes now that we've shrunk n down to something we should be able to fit into memory
     '''
     primes = eratosthenes_sieve(n)
@@ -83,10 +90,9 @@ def eratosthenes_sieve(n=100):
     :param n: <int>
     :return: <list> the primes up to n
     """
-    integer_list = range(3, n + 1)  # MemoryError - only pick of the odds, as the evens are obviously not prime
-    sieve = [None, None, 2] + [switch(integer) for integer in integer_list]
+    sieve = [None, None, 2] + [switch(integer) for integer in integer_generator(n)]
 
-    for i in integer_list:
+    for i in integer_generator(n):
         m = i  # start at i**2
         while i * m <= n:
             '''
@@ -100,6 +106,18 @@ def eratosthenes_sieve(n=100):
             m += 1
 
     return [p for p in sieve if p]  # now a list of all the primes less than n
+
+
+def integer_generator(n):
+    """
+    Creating a generator instead of using range so we're not taking up memory with an extra list
+    :param n: <int> the largest integer you want
+    :return: <generator> the integers 3 to n, including n
+    """
+    i = 3
+    while i <= n:
+        yield i
+        i += 1
 
 
 def switch(case):
