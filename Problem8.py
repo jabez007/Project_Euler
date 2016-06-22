@@ -44,7 +44,7 @@ def main(number, n=13):
 
 def product(factors):
     """
-
+    Calculates the product of the given factors, similar to the Python builtin sum function
     :param factors: <list> list of integers to multiply together
     :return: <int> product of the factors
     """

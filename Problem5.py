@@ -20,7 +20,7 @@ def main(n=20):
     Then to take care of composite numbers that are not the product
     unique primes (4, 8, 9, 12, ...) we have to look at exponents
     until the exponent puts us over n.
-    :param n:
+    :param n: <int>
     :return:
     """
     product = 1

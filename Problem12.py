@@ -37,7 +37,7 @@ def main(n=500):
 def number_of_divisors(n):
     """
     The number of positive divisors of n is denoted by d(n) or tau(n).
-    Clearly, for primes p, d(p)=2; and for prime powers, d(pn)=n+1.
+    Clearly, for primes p, d(p)=2; and for prime powers, d(p**n)=n+1.
     For example, 3**4 has the five (4+1) positive divisors 1, 3, 3**2, 3**3, and 3**4.
     We can prove that d(x) is a multiplicative function, so this is enough to know d(n) for all integers n
     --if we have the prime factorization of n, then the number of divisors is
