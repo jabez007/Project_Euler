@@ -87,7 +87,7 @@ def add_to_factors(factors, factor):
 def eratosthenes_sieve(n=100):
     """
     finds all of the prime numbers up to n using the Sieve of Eratosthenes
-    :param n: <int>
+    :param n: <int> the upper limit of the prime numbers to find. Default is 100
     :return: <list> the primes up to n
     """
     sieve = [None, None, 2] + [switch(integer) for integer in integer_generator(n)]
