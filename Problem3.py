@@ -28,7 +28,8 @@ def prime_factorization(n):
 
     '''
     To save on memory, start with primes up to the square root of n
-    REMINDER: The largest possible prime factor of n would be the prime p such that p*2 = n
+    REMINDER: The largest possible prime factor of n would be the prime 
+    p such that p*2 = n
     '''
     primes = eratosthenes_sieve(int(n ** .5))
 
@@ -40,20 +41,22 @@ def prime_factorization(n):
                 n = n / p
                 break
         '''
-        if we make it through all the primes but couldn't divide n break out of the while loop
+        if we make it through all the primes but couldn't divide n break
+        out of the while loop
         '''
         if n == orig_n:
             break
 
     '''
-    if we haven't found any factors after going through all the primes up to the square root of n
-    n is probably prime itself
+    if we haven't found any factors after going through all the primes 
+    up to the square root of n, n is probably prime itself
     '''
     if not factors:
         return {n: 1}
 
     '''
-    rebuild the primes now that we've shrunk n down to something we should be able to fit into memory
+    rebuild the primes now that we've shrunk n down to something we 
+    should be able to fit into memory
     '''
     primes = eratosthenes_sieve(n)
 
@@ -100,8 +103,10 @@ def eratosthenes_sieve(n=100):
             '''
             sieve[i * m] = None
             '''
-            Using the index to set non-prime elements to None is faster for large n than using list.remove()
-            list.remove() searches through the list every time in order to remove the first instance it finds
+            Using the index to set non-prime elements to None is faster 
+            for large n than using list.remove()
+            list.remove() searches through the list every time in order 
+            to remove the first instance it finds
             '''
             m += 1
 
@@ -110,7 +115,8 @@ def eratosthenes_sieve(n=100):
 
 def integer_generator(n):
     """
-    Creating a generator instead of using range so we're not taking up memory with an extra list
+    Creating a generator instead of using range so we're not taking up 
+    memory with an extra list
     :param n: <int> the largest integer you want
     :return: <generator> the integers 3 to n, including n
     """
@@ -122,7 +128,8 @@ def integer_generator(n):
 
 def switch(case):
     """
-    Primes (pun intended) the "sieve" for Eratosthenes by pre-excluding evens greater than 2
+    Primes (pun intended) the "sieve" for Eratosthenes by pre-excluding 
+    evens greater than 2
     :param case: <int>
     :return: <int/None>
     """
