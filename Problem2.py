@@ -19,30 +19,25 @@ def main(n=4e6):
     return sum_even
 
 
-def fibonacci_number(n, a=1, b=1):
-    """
-    finds the largest fibonacci number less than n
-    :param n:
-    :param a:
-    :param b:
-    :return: <int> the last fibonacci number before n
-    """
-    if a + b < n:
-        return fibonacci_number(n, b, a+b)
-    else:
-        return b
-
-
-def fibonacci_generator(n):
+def fibonacci_generator(n, a=1, b=1):
     """
     generates the fibonacci sequence up to n
     :param n:
     :return: <generator> fibonacci numbers up to n
     """
-    a, b = 1, 1
     while b < n:
         yield b
-        a, b = b, a+b
+        a, b = fibonacci(a, b)
+        
+        
+def fibonacci(a=1, b=1):
+	"""
+	returns the next step in the fibonacci sequence (n and n+1)
+	:param a: <int> the n-1 number of the fibonacci sequence
+	:param b: <int> the n number of the fibonacci sequence
+	:return: (<int>, <int>) the n and n+1 numbers of the fibonacci sequence
+	"""
+	return b, a+b
 
 # # # #
 
