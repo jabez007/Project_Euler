@@ -56,13 +56,22 @@ def is_prime(n, primes=[]):
     :param primes: <list> primes you want to use to in testing n
     :return: <boolean> True if we are not able to divide n by any of the given primes
     """
+    if n == 0:
+        return False
+
+    if n < 0:
+        n = -1*n
+        
     if not primes:
         primes.extend(eratosthenes_sieve(int(n ** .5)))
-
+    
+    if n in primes:
+        return True
+    
     for p in primes:
-        if n % p == 0:
+        if n%p == 0:
             return False
-
+    
     return True
 
 # # # #
