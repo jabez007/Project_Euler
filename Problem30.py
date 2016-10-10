@@ -22,7 +22,7 @@ Completed on Tue, 11 Oct 2016, 00:35
 
 def main(e=5):
     digit_power_sums = list()
-    for n in range(2, 10**(e+1)):
+    for n in range(10**3, 10**(e+1)):
         if sum(int(d)**e for d in str(n)) == n:
             digit_power_sums.append(n) 
     return sum(digit_power_sums), digit_power_sums
