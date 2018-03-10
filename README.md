@@ -1,3 +1,5 @@
+# Project Euler (Python)
+
 ## Synopsis
 
 These are my solutions for the problems of Project Euler done in 
@@ -11,7 +13,7 @@ I'm combining my love of mathematics with my desire to improve my
 programming skills and knowledge of Python.
 
 
-## API Reference
+## References
 
 Several of the function and class that I've created in these solutions
 are reused in other solutions and can be reused outside of Project 
