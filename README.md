@@ -42,8 +42,3 @@ Euler. I've to include those here
   + factorial(n) - recursively calculates the factorial of n.
 + From Problem21
   + get_proper_divisors(n) - Finds all of the proper divisors of n
-
-
-## License
-
-A short snippet describing the license (MIT, Apache, etc.)
