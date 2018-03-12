@@ -1,9 +1,10 @@
-# Project Euler
+# Project Euler (Haskell)
 
 ## Synopsis
-These are my solutions for the problems of Project Euler done in various programming languages.
-See the different branches of this repository for the solutions done in that language.
+These are my solutions for the problems of Project Euler done in Haskell.
+
 
 ## Motivation
-I'm combining my love of mathematics with my desire to improve my programming skills and knowledge of Git.
-Using the structure of this repository I hope to practice some of the different Git commands and operations.
+I'm using my love of mathematics to help me learn the basics of Haskell.
+Hopefully, through this and [Learn You a Haskell](http://learnyouahaskell.com) 
+I'll have a decent base to build real Haskell applications from.
