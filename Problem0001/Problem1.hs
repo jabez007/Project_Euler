@@ -3,7 +3,7 @@
 -- Multiples of m less than n
 -- returns the list of natural numbers below n that are multiples of m
 multiples :: Int -> Int -> [Int]
-multiples m n = [m*x | x <- [1..n], m*x < n]
+multiples m n = [m*x | x <- (takeWhile (< (n `div` m) + 1) [1..]), m*x < n]  -- `div` gives us the integer divisor instead of a float.
 
 -- let threes = sum multiples 3 1000
 -- let fives = sum multiples 5 1000
