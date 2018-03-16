@@ -21,7 +21,7 @@ primes = filter isPrime (2:[3, 5..])
 factorize :: Int -> [Int]
 factorize n
     | isPrime n    = [n]
-    | otherwise    = factor n (takeWhile (<= (n `div` 2)) primes)
+    | otherwise    = factor n primes  -- this is an infinite list, but the magic of Haskell's lazy lists saves us.
     where
         factor d (x:xs)
             | d `rem` x == 0    = [x]++(factorize (d `div` x)) 
