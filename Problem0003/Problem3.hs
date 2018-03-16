@@ -24,7 +24,7 @@ factorize n
     | otherwise    = factor n primes  -- this is an infinite list, but the magic of Haskell's lazy lists saves us.
     where
         factor d (x:xs)
-            | d `rem` x == 0    = [x]++(factorize (d `div` x)) 
+            | d `rem` x == 0    = x:(factorize (d `div` x)) 
             | otherwise         = factor d xs
 
 -- This looks messy, and can probably be done more efficiently
