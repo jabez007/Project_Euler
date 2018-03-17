@@ -7,20 +7,20 @@ isPalindrome x = x == reverse x
 -- What we can do is change the integer into a string.
 isPalindrome' :: Int -> Bool
 isPalindrome' x = y == reverse y
-  where y = show x
+    where y = show x
 
 -- So if we have a list of candidates palindromes, 
 -- we can essentially apply a filter to is to find the actual palindromes.
 findPalindromes [] = []
 findPalindromes xs@(x:y)
-  | isPalindrome x  = x:(findPalindromes y)
-  | otherwise       = findPalindromes y
+    | isPalindrome x  = x:(findPalindromes y)
+    | otherwise       = findPalindromes y
 
 findPalindromes' :: [Int] -> [Int]
 findPalindromes' [] = []
 findPalindromes' xs@(x:y)
-  | isPalindrome' x  = x:(findPalindromes' y)
-  | otherwise        = findPalindromes' y
+    | isPalindrome' x  = x:(findPalindromes' y)
+    | otherwise        = findPalindromes' y
 
 -- Now all we need is to come up with our list of candidate palindromes.
 -- Instead of just using [x*y | x <- [100..999], y <- [100.999]]
@@ -39,8 +39,8 @@ combinations 0 _  = [[]]
 -- from the remaining xs.
 combinations k (x:xs) = x_start ++ others
     where 
-      x_start = [ x : rest | rest <- combinations (k-1) xs ]
-      others  = if k <= length xs then combinations k xs else []
+        x_start = [ x : rest | rest <- combinations (k-1) xs ]
+        others  = if k <= length xs then combinations k xs else []
 
 -- maximum (findPalindromes' [product x | x <- combinations 2 [999,998..100]])
 -- Its slow because we are still doing more multiplications than we need to.
